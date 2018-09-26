@@ -19,6 +19,7 @@ const BotCard = props => {
       botType = <div />;
   }
 
+
   return (
     <div className="ui column">
       <div
@@ -56,6 +57,7 @@ const BotCard = props => {
       </div>
     </div>
   );
+
 
 };
 
