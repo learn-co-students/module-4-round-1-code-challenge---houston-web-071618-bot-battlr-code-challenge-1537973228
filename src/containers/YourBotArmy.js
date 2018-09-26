@@ -16,7 +16,7 @@ class YourBotArmy extends React.Component {
       </div>
     );
   }
-  
+
 };
 
 export default YourBotArmy;
