@@ -7,9 +7,8 @@ class BotCollection extends React.Component {
   render(){
   	return (
   	  <div className="ui four column grid">
-    		<div className="row">
-    		  {/*...and here..*/}
-    		  Collection of all bots
+    		<div className="row" onClick={(e) => this.props.handleBotClick}>
+    		 {this.props.name}
     		</div>
   	  </div>
   	);

@@ -5,6 +5,8 @@ const BotCard = props => {
 
   let botType;
 
+  debugger
+
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon military" />;
