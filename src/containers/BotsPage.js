@@ -1,6 +1,7 @@
 import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from '../components/BotSpecs'
 const BOT_URL = "https://bot-battler-api.herokuapp.com/api/v1/bots";
 
 class BotsPage extends React.Component {
@@ -10,6 +11,7 @@ class BotsPage extends React.Component {
 
 		this.state = {
 			allBots: [],
+			//botSpec: null,
 			selectedBot: null,
 			myArmy: [],
 			isLoading: true
@@ -55,10 +57,24 @@ class BotsPage extends React.Component {
 		//debugger
 	}
 
+	handleClearSelected = () => {
+		//debugger
+		this.setState({
+			selectedBot: null
+		})
+	}
+
 	render() {
 		return (
 			<div>
 				<YourBotArmy myArmy={this.state.myArmy} handleClick={this.handleClick}/>
+
+				{this.state.selectedBot === null ? (
+					null
+				) : (
+					<BotSpecs bot={this.state.selectedBot[0]} clearBot={this.handleClearSelected} addBot={this.handleClick}/>
+				)}
+
 				{this.state.isLoading ? (
 					"Loading"
 				) : (
