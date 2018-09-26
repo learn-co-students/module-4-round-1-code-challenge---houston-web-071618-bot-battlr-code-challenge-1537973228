@@ -21,9 +21,11 @@ const BotCard = props => {
 
     
    const handleOnClick = (e) =>{
+    
     props.selectBot(bot)
+     
   }
-
+  
   return (
     <div className="ui column">
       <div

@@ -3,10 +3,18 @@ import BotCard from "../components/BotCard";
 
 class YourBotArmy extends React.Component {
   
+  // componentWillMount() {
+  //   let newProps = this.props;
+  //   delete newProps.asyncHandler;
+  //   this.setState({properties: newProps})
+  // }
   
   renderBotCard = () => {
+    // console.log(this.props)
+    
 		return this.props.selectedBots.map((bot) => {
-			return <BotCard bot={bot} selectBot={this.props.selectBotForArmy}/>
+			return <BotCard bot={bot} 
+      selectBot={this.props.handleBotRemoval}/>
 		} )
 	}
 
@@ -16,7 +24,7 @@ class YourBotArmy extends React.Component {
         <div className="ui five column grid">
           <div className="row bot-army-row">
             {this.renderBotCard()}
-            Your Bot Army
+           
           </div>
         </div>
       </div>
