@@ -18,8 +18,19 @@ class BotsPage extends React.Component {
     .then(bots => this.setState({allBots:bots, loading:false}))
   }
 
-  setSelectedBot =(bot) =>{
-    this.setState({selectedBot:bot})
+  setSelectedBot =(bot,location) =>{
+    if (location === "mine"){
+      let bots=[...this.state.myBots]
+      bots= bots.filter(myBot => (bot !== myBot))
+
+      this.setState({
+        myBots:bots
+      })
+    }
+    else{
+      this.setState({selectedBot:bot})
+    }
+
   }
 
   recruitBot = (bot) =>{
@@ -36,7 +47,7 @@ class BotsPage extends React.Component {
       <div>
         {this.state.loading ? <h1>Loading</h1> :
           (<div>
-           <YourBotArmy myBots={this.state.myBots}/>
+           <YourBotArmy myBots={this.state.myBots} setSelectedBot={this.setSelectedBot}/>
            {this.state.selectedBot === null ? null :<BotSpecs bot={this.state.selectedBot} recruitBot={this.recruitBot} setSelectedBot={this.setSelectedBot}/>}
            <BotCollection bots={this.state.allBots} setSelectedBot={this.setSelectedBot}/>
           </div>
