@@ -4,13 +4,13 @@ import BotCard from "../components/BotCard";
 class BotCollection extends React.Component {
 	//your code here
 	
-	selectBot = (botID) => {
-		this.setState(state => {
-			let selected = {this.props.bot.id == botID}
-		}
-		bot.selected: selected
-		return state
-	}
+	// selectBot = (botID) => {
+	// 	this.setState(state => {
+	// 		let selected = {this.props.bot.id == botID}
+	// 	}
+	// 	bot.selected: selected
+	// 	return state
+	// }
 
   render(){
 		const bots = this.props.bots
