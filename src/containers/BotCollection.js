@@ -2,16 +2,19 @@ import React from "react";
 import BotCard from "../components/BotCard";
 
 class BotCollection extends React.Component {
-  //your code here
+  state = {
+    showSpecToggle: false
+  };
 
   render() {
-    const { bots, addBot } = this.props;
+    const { showSpecToggle } = this.state;
+    const { bots, onBotSelect } = this.props;
 
     return (
       <div className="ui four column grid">
         <div className="row" />
         {bots.map(bot => (
-          <BotCard bot={bot} key={bot.id} handleClick={addBot} />
+          <BotCard bot={bot} key={bot.id} handleClick={onBotSelect} />
         ))}
       </div>
     );
