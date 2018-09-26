@@ -1,4 +1,5 @@
 import React from "react";
+import BotCollection from "../containers/BotCollection.js";
 
 const BotCard = props => {
   const { bot } = props;
