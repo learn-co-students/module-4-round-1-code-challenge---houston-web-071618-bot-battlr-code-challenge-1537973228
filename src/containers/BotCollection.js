@@ -8,7 +8,7 @@ class BotCollection extends React.Component {
   renderBots = () => (
     this.props.botList.map(bot => (
       <BotCard bot={bot} key={bot.id}
-      updateSelectedBotArmy = {this.props.updateSelectedBotArmy} />
+      updateBotArmy = {this.props.updateBotArmy} />
     ))
   )
 

@@ -8,7 +8,8 @@ class BotsPage extends React.Component {
     super ()
     this.state = {
       botList: [],
-      selectedBotArmy: null
+      botArmy: [],
+      selectedBot: null
     }
     this.handleFetch()
   }
@@ -21,20 +22,29 @@ class BotsPage extends React.Component {
     }))
     }
 
-    updateSelectedBotArmy = (bot) => (
-      fetch(`https://bot-battler-api.herokuapp.com/api/v1/bots/${bot.id}`)
-      .then(resp => resp.json())
-      .then(bot => this.setState({
-        selectedBotArmy: bot
-      }))
-  )
+    updateBotArmy = (bot) => {
+      if(!this.state.botArmy.includes(bot)){
+      this.setState(state => {
+        state.botArmy.push(bot)
+        return state
+      })}
+  }
+
+  removeBotFromArmy= (bot) => {
+    this.setState(state => {
+      state.botArmy = state.botArmy.filter(armyBot => (armyBot !== bot))
+      return state
+    })
+  }
+
+  // this.setState({botArmy: [...this.state.botArmy, bot]})
 
 
   render() {
     return (
       <div>
-        <BotCollection botList={this.state.botList} updateSelectedBotArmy = {this.updateSelectedBotArmy}/>
-        <YourBotArmy />
+        <YourBotArmy botArmy={this.state.botArmy} removeBotFromArmy={this.removeBotFromArmy}/>
+        <BotCollection botList={this.state.botList} updateBotArmy = {this.updateBotArmy}/>
       </div>
     );
   }
