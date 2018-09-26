@@ -1,13 +1,16 @@
 import React from "react";
 import BotCollection from "./BotCollection.js";
 import BotCard from "../components/BotCard.js"
+import YourBotArmy from "./YourBotArmy.js"
 
 class BotsPage extends React.Component {
   //start here with your code for step one
 
   state = {
   	allBots: [],
-    isLoading: false
+    isLoading: false,
+    armyBots: [],
+    selectedBot: {}
   }
 
 	componentDidMount() {
@@ -22,6 +25,20 @@ class BotsPage extends React.Component {
 				})
 			})
 	}
+  
+    selectedBot = (bot) => {
+
+      if (!this.state.armyBots.includes(bot)) { 
+        this.setState({
+          armyBots: [...this.state.armyBots, bot]
+        })
+       } else {
+            const newArmy = this.state.armyBots.filter(armyBot => bot !== armyBot)
+              this.setState({
+              armyBots:newArmy
+              })
+          }
+    }
 
   render() {
     const {allBots, isLoading} = this.state;
@@ -32,8 +49,8 @@ class BotsPage extends React.Component {
 
     return (
       <div>
-      	<BotCollection allBots={this.state.allBots} />
-  
+        <YourBotArmy armyBots={this.state.armyBots} selectedBot={this.selectedBot} />
+      	<BotCollection allBots={this.state.allBots} selectedBot={this.selectedBot} />
       </div>
     );
   }
