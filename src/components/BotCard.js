@@ -1,4 +1,7 @@
 import React from "react";
+import BotCollection from "../containers/BotCollection.js";
+import YourBotArmy from "../containers/YourBotArmy.js";
+import BotsPage from "../containers/BotsPage.js";
 
 const BotCard = props => {
   const { bot } = props;
@@ -21,11 +24,7 @@ const BotCard = props => {
 
   return (
     <div className="ui column">
-      <div
-        className="ui card"
-        key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
-      >
+      <div className="ui card" key={bot.id} onClick={(event) => props.selectedBot(bot)} >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
